@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  telegram-bot:
+    build:
+      context: .
+      args:
+        APP_PATH: ${APP_PATH}
+    container_name: croak-nb-telegram-bot
+    environment:
+      PYTHONPATH: ${APP_PATH}
+    restart: no
+    volumes:
+      - ./src:${APP_PATH}/src
+      - ./.env.python:${APP_PATH}/.env.python
+    networks:
+        - croak-nb-network
+
+networks:
+  croak-nb-network:
+    driver: bridge
