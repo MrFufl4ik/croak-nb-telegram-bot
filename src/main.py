@@ -11,6 +11,7 @@ from src.core.database.database_base import Base
 from src.core.database.database_clients import get_main_database
 from src.core.telegram_bot import get_telegram_bot
 from src.middlewares.create_bot_user_middleware import CreateBotUserMiddleware
+from src.middlewares.verify_bot_user_middleware import VerifyBotUserMiddleware
 
 
 async def init_database() -> None:
@@ -32,6 +33,7 @@ def init_dispatcher() -> Dispatcher:
     dp = Dispatcher()
     #middlewares
     dp.update.middleware(CreateBotUserMiddleware())
+    dp.update.middleware(VerifyBotUserMiddleware())
     #routers
     dp.include_router(start_router)
     return dp

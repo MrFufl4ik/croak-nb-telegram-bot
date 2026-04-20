@@ -4,7 +4,6 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message, User
 
 from src.core.telegram_bot import get_cached_image
-from src.data.bot_user import is_bot_user_exist_with_telegram_id, BotUser, add_bot_user
 from src.dynamic import image
 from src.dynamic.config import localisation_config
 
