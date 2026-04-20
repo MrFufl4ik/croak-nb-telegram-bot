@@ -17,4 +17,4 @@ RUN wget https://git.croakland.ru/mrfufl4ik/croak-bash-utils/raw/branch/main/wai
     -q -O /usr/bin/wait-for-multiply.sh -L && \
     chmod +x /usr/bin/wait-for-multiply.sh
 
-CMD ["/usr/bin/wait-for-multiply.sh", "redis:6379", "--", "python", "src/main.py"]
+CMD ["/usr/bin/wait-for-multiply.sh", "database:5432", "redis:6379", "--", "python", "src/main.py"]
