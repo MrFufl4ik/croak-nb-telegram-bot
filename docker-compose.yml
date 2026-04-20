@@ -12,6 +12,7 @@ services:
     restart: no
     volumes:
       - ./src:${APP_PATH}/src
+      - ./dynamic:${APP_PATH}/dynamic
       - ./.env.python:${APP_PATH}/.env.python
     networks:
         - croak-nb-network
