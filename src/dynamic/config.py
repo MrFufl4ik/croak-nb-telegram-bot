@@ -9,6 +9,13 @@ with open(__config_folder_path / "localisation.yml", 'r', encoding="utf-8") as f
 with open(__config_folder_path / "main.yml", 'r', encoding="utf-8") as f:
     main_config: dict = yaml.safe_load(f)
 
+database_config: dict = {
+    "user": os.environ["DATABASE_USER"],
+    "password": os.environ["DATABASE_PASSWORD"],
+    "port": 5432,
+    "name": os.environ["DATABASE_NAME"]
+}
+
 redis_config: dict = {
     "password": os.environ["REDIS_PASSWORD"],
     "port": 6379,
