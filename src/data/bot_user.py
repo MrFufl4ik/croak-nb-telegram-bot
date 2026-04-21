@@ -17,13 +17,13 @@ async def add_bot_user(bot_user: BotUser):
     async with database.wrapper() as session:
         session.add(bot_user)
 
-async def is_bot_user_exist_with_telegram_id(telegram_id: int) -> bool:
+async def is_bot_user_exists_by_telegram_id(telegram_id: int) -> bool:
     async with database.wrapper() as session:
         stmt = select(exists().where(BotUser.telegram_id == telegram_id))
         result = await session.execute(stmt)
         return result.scalar()
 
-async def get_bot_user_with_telegram_id(telegram_id: int) -> BotUser:
+async def get_bot_user_by_telegram_id(telegram_id: int) -> BotUser:
     async with database.wrapper() as session:
         result = await session.execute(select(BotUser).where(BotUser.telegram_id == telegram_id))
         return result.scalar()

@@ -3,11 +3,11 @@ from datetime import timedelta
 from pathlib import Path
 
 from aiogram import Bot
-from aiogram.types import Message, FSInputFile
+from aiogram.types import Message, FSInputFile, InlineKeyboardButton
 
 from redis import Redis
 from src.core.redis.redis_clients import get_main_redis
-from src.dynamic.config import main_config
+from src.dynamic.config import main_config, localisation_config
 
 bot: Bot | None = None
 
@@ -18,6 +18,7 @@ def get_telegram_bot() -> Bot:
     return bot
 
 __telegram_image_cache_config: dict = main_config["telegram_image_cache"]
+__main_localisation: dict = localisation_config["main"]
 async def get_cached_image(image_path: Path) -> str:
     redis: Redis = get_main_redis().redis
     redis_key = f"telegram_image_cache:{image_path}"
@@ -37,3 +38,11 @@ async def get_cached_image(image_path: Path) -> str:
     expire_minutes: float = __telegram_image_cache_config.get("expire_minutes", 1.0)
     await redis.setex(redis_key, int(timedelta(minutes=expire_minutes).total_seconds()), file_id)
     return file_id
+
+def create_cancel_button(callback_data: str) -> InlineKeyboardButton:
+    result_button = InlineKeyboardButton(
+        text=__main_localisation.get("cancel_button","Cancel"),
+        callback_data=callback_data,
+        style="danger"
+    )
+    return result_button

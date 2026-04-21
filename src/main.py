@@ -7,6 +7,7 @@ import dotenv
 from aiogram import Dispatcher
 
 from routers.start_router import router as start_router
+from routers.status_router import router as status_router
 from src.core.database.database_base import Base
 from src.core.database.database_clients import get_main_database
 from src.core.telegram_bot import get_telegram_bot
@@ -36,6 +37,7 @@ def init_dispatcher() -> Dispatcher:
     dp.update.middleware(VerifyBotUserMiddleware())
     #routers
     dp.include_router(start_router)
+    dp.include_router(status_router)
     return dp
 
 def init_environment_variables() -> None:
