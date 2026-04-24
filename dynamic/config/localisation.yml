@@ -6,8 +6,20 @@ start_menu:
     
     CroakNB - это лучший способ использования интернета
   status_menu_button: "Статус"
+  connect_menu_button: "Подключиться"
 
 status_menu:
+  caption_without_active_product: |
+    Ваша подписка CroakNB не оплачена.
+    - Стоимость подписки: {0}₽.
+    
+    Оплатив подписку в первый раз вы получите продукт в течение дня.
+  caption_with_active_product: |
+    - Ваша подписка CroakNB активна до {1}.
+    - Стоимость подписки: {0}₽.
+
+connect_menu:
   caption: |
-    - Ваша подписка CroakNB активна до {0}.
-    - Стоимость подписки: {1}₽.
+    Ваша индивидуальная подписка в формате <b>Happ</b>:
+    
+    <pre>{0}</pre>

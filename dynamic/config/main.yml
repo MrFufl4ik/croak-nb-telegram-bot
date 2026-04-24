@@ -2,4 +2,4 @@ telegram_image_cache:
   telegram_user_id: 1087240511
   expire_minutes: 60.0
 product:
-  cost: 200
+  default_cost: 200

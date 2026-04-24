@@ -27,3 +27,8 @@ async def get_bot_user_by_telegram_id(telegram_id: int) -> BotUser:
     async with database.wrapper() as session:
         result = await session.execute(select(BotUser).where(BotUser.telegram_id == telegram_id))
         return result.scalar()
+
+async def get_bot_user_by_id(id: int) -> BotUser:
+    async with database.wrapper() as session:
+        result = await session.execute(select(BotUser).where(BotUser.id == id))
+        return result.scalar()

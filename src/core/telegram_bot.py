@@ -1,3 +1,5 @@
+import asyncio
+import hashlib
 import os
 from datetime import timedelta
 from pathlib import Path
@@ -19,9 +21,21 @@ def get_telegram_bot() -> Bot:
 
 __telegram_image_cache_config: dict = main_config["telegram_image_cache"]
 __main_localisation: dict = localisation_config["main"]
+
+
+def __sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+async def __async_sha256(data: bytes) -> str:
+    return await asyncio.to_thread(__sha256, data)
+
 async def get_cached_image(image_path: Path) -> str:
     redis: Redis = get_main_redis().redis
-    redis_key = f"telegram_image_cache:{image_path}"
+
+    image_bytes: bytes = open(image_path, 'rb').read()
+    image_hash = await __async_sha256(image_bytes)
+
+    redis_key = f"telegram_image_cache:{image_hash}"
 
     cached_file_id = await redis.get(redis_key)
     if cached_file_id:
