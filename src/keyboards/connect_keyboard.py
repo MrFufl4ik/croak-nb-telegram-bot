@@ -10,5 +10,7 @@ async def get_keyboard() -> InlineKeyboardMarkup:
 
     result.append([cancel_button])
 
+    # Todo добавить кнопку для перехода в Happ.
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=result)
     return keyboard

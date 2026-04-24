@@ -8,6 +8,7 @@ from aiogram import Bot
 from aiogram.types import Message, FSInputFile, InlineKeyboardButton
 
 from redis import Redis
+from src.core.hashing import async_sha256
 from src.core.redis.redis_clients import get_main_redis
 from src.dynamic.config import main_config, localisation_config
 
@@ -22,18 +23,11 @@ def get_telegram_bot() -> Bot:
 __telegram_image_cache_config: dict = main_config["telegram_image_cache"]
 __main_localisation: dict = localisation_config["main"]
 
-
-def __sha256(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
-
-async def __async_sha256(data: bytes) -> str:
-    return await asyncio.to_thread(__sha256, data)
-
 async def get_cached_image(image_path: Path) -> str:
     redis: Redis = get_main_redis().redis
 
     image_bytes: bytes = open(image_path, 'rb').read()
-    image_hash = await __async_sha256(image_bytes)
+    image_hash = await async_sha256(image_bytes)
 
     redis_key = f"telegram_image_cache:{image_hash}"
 

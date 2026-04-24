@@ -1,12 +1,14 @@
 main:
-  cancel_button: "Отмена"
+  cancel_button: "Отмена ↩"
 start_menu:
   caption: |
     Привет, <u>{0}</u>.
     
     CroakNB - это лучший способ использования интернета
   status_menu_button: "Статус"
-  connect_menu_button: "Подключиться"
+  support_menu_button: "Поддержка"
+  connect_menu_button:          "Подключиться"
+  inactive_connect_menu_button: "Подключиться"
 
 status_menu:
   caption_without_active_product: |
@@ -23,3 +25,4 @@ connect_menu:
     Ваша индивидуальная подписка в формате <b>Happ</b>:
     
     <pre>{0}</pre>
+  inactive_answer_message: "Ваша подписка закончилась."

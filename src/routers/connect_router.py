@@ -33,3 +33,13 @@ async def __on_callback(callback: CallbackQuery):
         ),
         reply_markup=keyboard
     )
+
+@router.callback_query(lambda c: c.data == "inactive_connect_menu")
+async def __on_callback(callback: CallbackQuery):
+    bot_user = await get_bot_user_by_telegram_id(callback.from_user.id)
+    is_active = await is_product_user_active(bot_user)
+    if is_active: return
+    await callback.answer(
+        __connect_menu_localisation.get("inactive_answer_message", "Subscription expired!"),
+        show_alert=True
+    )
