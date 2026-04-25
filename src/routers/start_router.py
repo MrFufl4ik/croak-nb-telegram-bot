@@ -30,15 +30,13 @@ async def start_command_handler(message: Message):
         reply_markup=keyboard
     )
 
-@router.callback_query(lambda c: c.data == "start_menu")
-async def __on_callback(callback: CallbackQuery):
-    user = callback.from_user
+async def init_start_message(user: User, message: Message):
     bot_user = await get_bot_user_by_telegram_id(user.id)
     media = await get_cached_image(image.start_menu_image)
     caption = __start_menu_localisation.get("caption", "error 500")
     caption = caption.format(user.full_name)
     keyboard = await get_keyboard(bot_user)
-    await callback.message.edit_media(
+    await message.edit_media(
         InputMediaPhoto(
             media=media,
             caption=caption,
@@ -46,3 +44,7 @@ async def __on_callback(callback: CallbackQuery):
         ),
         reply_markup=keyboard
     )
+
+@router.callback_query(lambda c: c.data == "start_menu")
+async def __on_callback(callback: CallbackQuery):
+    await init_start_message(callback.from_user, callback.message)

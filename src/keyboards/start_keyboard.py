@@ -14,6 +14,10 @@ async def get_keyboard(bot_user: BotUser) -> InlineKeyboardMarkup:
         text=__start_menu_localisation.get("status_menu_button", "Status"),
         callback_data="status_menu"
     )
+    offer_menu_button = InlineKeyboardButton(
+        text=__start_menu_localisation.get("offer_menu_button", "Offer"),
+        callback_data="offer_menu"
+    )
     connect_menu_button = InlineKeyboardButton(
         text=__start_menu_localisation.get("connect_menu_button", "Connect"),
         callback_data="connect_menu",
@@ -32,8 +36,10 @@ async def get_keyboard(bot_user: BotUser) -> InlineKeyboardMarkup:
     is_exists = await is_product_user_active(bot_user)
     if is_exists: result.append([connect_menu_button])
     else: result.append([inactive_connect_menu_button])
+
     # Todo доработать поддержку
-    result.append([support_menu_button, status_menu_button])
+    result.append([status_menu_button])
+    result.append([support_menu_button, offer_menu_button])
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=result)
     return keyboard
