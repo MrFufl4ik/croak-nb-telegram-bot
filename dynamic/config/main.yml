@@ -7,3 +7,7 @@ support:
   url: "https://t.me/mrfufl4ik"
 offer:
   url: "https://nb.croakland.ru/offer"
+connect:
+  download_link_windows:  "https://nb.croakland.ru/download/happ/windows"
+  download_link_linux:    "https://nb.croakland.ru/download/happ/linux"
+  download_link_android:  "https://nb.croakland.ru/download/happ/android"

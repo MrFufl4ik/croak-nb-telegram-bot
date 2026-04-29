@@ -37,9 +37,12 @@ status_menu:
 
 connect_menu:
   caption: |
-    <b>НЕ РАСПРОСТРАНЯТЬ КОНФИГУРАЦИОННЫЕ ДАННЫЕ!</B>
+    ㅤ
+    - <a href="{1}"><u>Happ под Windows</u></a>
+    - <a href="{2}"><u>Happ под Linux</u></a>
+    - <a href="{3}"><u>Happ под Android</u></a>
     
-    Ваша индивидуальная подписка для сервиса <b>Happ</b>:
+    Добавте конфигурацию ниже в <b>Happ</b>:
     
     <pre>{0}</pre>
   inactive_answer_message: "Ваша подписка закончилась."
