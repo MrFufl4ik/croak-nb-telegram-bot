@@ -17,7 +17,7 @@ __product_config: dict = main_config["product"]
 
 @router.callback_query(lambda c: c.data == "status_menu")
 async def __on_callback(callback: CallbackQuery):
-    media = await get_cached_image(image.start_menu_image)
+    media = await get_cached_image(image.status_menu_image)
     bot_user = await get_bot_user_by_telegram_id(callback.from_user.id)
     is_active = await is_product_user_active(bot_user)
     default_cost = __product_config.get("default_cost", 100)
@@ -26,7 +26,7 @@ async def __on_callback(callback: CallbackQuery):
         caption = __status_menu_localisation.get("caption_with_active_product", "error 500")
         expires_dt = product_user.expires_at
         cost = product_user.cost if product_user.cost is not None else default_cost
-        caption = caption.format(cost, expires_dt.strftime("%d.%m.%y"))
+        caption = caption.format(cost, expires_dt.strftime("%d.%m.%Y"))
     else:
         is_exists = await is_product_user_exists(bot_user)
         caption = __status_menu_localisation.get("caption_without_active_product", "error 500")
