@@ -10,6 +10,11 @@ __support_config: dict = main_config["support"]
 async def get_keyboard(bot_user: BotUser) -> InlineKeyboardMarkup:
     result = []
 
+    prolong_menu_button = InlineKeyboardButton(
+        text=__start_menu_localisation.get("prolong_menu_button", "Prolong"),
+        callback_data="prolong_menu",
+        style="primary"
+    )
     status_menu_button = InlineKeyboardButton(
         text=__start_menu_localisation.get("status_menu_button", "Status"),
         callback_data="status_menu",
@@ -44,6 +49,7 @@ async def get_keyboard(bot_user: BotUser) -> InlineKeyboardMarkup:
     else: result.append([inactive_connect_menu_button])
 
     # Todo доработать поддержку
+    result.append([prolong_menu_button])
     result.append([status_menu_button])
     result.append([support_menu_button, offer_menu_button])
 

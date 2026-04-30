@@ -8,6 +8,7 @@ from aiogram import Dispatcher
 
 from routers.start_router import router as start_router
 from routers.status_router import router as status_router
+from routers.prolong_router import router as prolong_router
 from routers.connect_router import router as connect_router
 from routers.main_connect_router import router as main_connect_router
 from routers.wl_connect_router import router as wl_connect_router
@@ -43,6 +44,7 @@ def init_dispatcher() -> Dispatcher:
     #routers
     dp.include_router(start_router)
     dp.include_router(connect_router)
+    dp.include_router(prolong_router)
     dp.include_router(main_connect_router)
     dp.include_router(wl_connect_router)
     dp.include_router(status_router)

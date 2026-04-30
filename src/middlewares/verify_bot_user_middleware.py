@@ -12,5 +12,5 @@ class VerifyBotUserMiddleware(BaseMiddleware):
         user: user = data.get("event_from_user")
         if not user or not user.id: return await handler(event, data)
         bot_user = await get_bot_user_by_telegram_id(user.id)
-        if not bot_user.is_verified: return None
+        if bot_user is None or not bot_user.is_verified: return None
         return await handler(event, data)

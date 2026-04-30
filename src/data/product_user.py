@@ -22,6 +22,10 @@ class ProductUser(Base):
     expires_at: Mapped[date] = Column(Date, nullable=False)
     connect_link: Mapped[str | None] = Column(String, nullable=True)
 
+async def add_product_user(product_user: ProductUser):
+    async with database.wrapper() as session:
+        session.add(product_user)
+
 async def is_product_user_exists(bot_user: BotUser) -> bool:
     async with database.wrapper() as session:
         subq = (

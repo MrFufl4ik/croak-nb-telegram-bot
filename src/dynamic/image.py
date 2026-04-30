@@ -13,4 +13,5 @@ def create_folder_path_wrapper(path: Path) -> Path:
 start_menu_image = get_image(__image_folder_path / "start_menu.png")
 connect_menu_image = get_image(__image_folder_path / "connect_menu.png")
 status_menu_image = get_image(__image_folder_path / "status_menu.png")
+prolong_menu_image = get_image(__image_folder_path / "prolong_menu.png")
 offer_menu_image = get_image(__image_folder_path / "offer_menu.png")
