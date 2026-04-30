@@ -11,3 +11,6 @@ connect:
   download_link_windows:  "https://nb.croakland.ru/download/happ/windows"
   download_link_linux:    "https://nb.croakland.ru/download/happ/linux"
   download_link_android:  "https://nb.croakland.ru/download/happ/android"
+wl_connect:
+  #TODO СМЕНИТЬ ССЫЛКУ СРОЧНО
+  connect_link: "happ://crypt5/hfqaH50kJkazGL1x6b154EoXBtL3fKhdVSjeDNv+4BK0PVc23oA4bZkTBL+5AH+rh1yZdi5ofMSQ4wu701uBTqTaJJZ5ongmMK4RvbP1NFp7IF7haQ+3VHijUrpmrWbnSVBKsqxJJP7murES/VXzYpuVoI4/YwIgKotrwk1CwNh9g=tPO9OlB6b09W3PKRD/P0y9gi0O9n1aHNwEjjkhXlxyfOQqolvE/xr0K9FBBxHMsOzvP+3hl8D9nNiLd0AU6zQmfrGIAgZbbNBbRz6DrNadK0BEoOsVtRmLDCe4MiHAxANSDOb8FOMc0o06r+OHbM+SSMmgFs8rUZZHyZTtnYlx4Rj667smD1ahMItJReXAOV11pxiKAmIVX8hPXOAmYjHQZgkky+qGMqKCM0Y+7Q/x0Kqedh1JjMlFUHlk6+GY4LTgbgJG+47d5eSgrg2q/s55yp1xF+tc1miZNNjtLwITFCdnotOdaUo638vDVHcdYlMbG/jMKVWiT/dU1mwt82WJpYeupRmO/lEmSfaZ1KcQF2beb41oVhS4opxNJj+5MvYuSrLr5iRVRlE5auKX6Ea6qIRYRowt7sv9dOdF7e/Mch6A19417j+412otD1TM9gP7QkzDIKr8iE5OLD59ryo61gn1F7b5OQnyoBWdmXUs4lNjVmwFl9bVuHCF6hgxcB53ctAWufIEXWQPFTCbRbl/3gYi2ZcCwLAjVri5qJqpDKE/9XPICB7jzH9icju6HIrBfRSUmzTSG3m5Cn5KPKr478rBT6wfREsUoGM5pc7XkBHF08TZJ7aLlbMWawwTk7M9uS74JJU83DOBSun4xCbMTF+v+EdXA3st0e6Gev8vo=RUxctr"

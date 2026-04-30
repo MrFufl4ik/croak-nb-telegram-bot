@@ -9,6 +9,8 @@ from aiogram import Dispatcher
 from routers.start_router import router as start_router
 from routers.status_router import router as status_router
 from routers.connect_router import router as connect_router
+from routers.main_connect_router import router as main_connect_router
+from routers.wl_connect_router import router as wl_connect_router
 from routers.offer_router import router as offer_router
 from routers.admin_router import router as admin_router
 from src.core.database.database_base import Base
@@ -41,6 +43,8 @@ def init_dispatcher() -> Dispatcher:
     #routers
     dp.include_router(start_router)
     dp.include_router(connect_router)
+    dp.include_router(main_connect_router)
+    dp.include_router(wl_connect_router)
     dp.include_router(status_router)
     dp.include_router(offer_router)
     dp.include_router(admin_router)

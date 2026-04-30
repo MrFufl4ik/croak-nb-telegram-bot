@@ -12,8 +12,7 @@ from src.dynamic.image import create_folder_path_wrapper, __image_folder_path, e
 __connect_image_folder_path = create_folder_path_wrapper(__image_folder_path / "connect_image")
 __source_image = get_image(__connect_image_folder_path / "source.png")
 
-async def get_connect_image(product_user: ProductUser) -> Path:
-    connect_link: str = product_user.connect_link
+async def get_connect_image_by_connect_link(connect_link) -> Path:
     result_image_file_name = "{0}.png"
     result_image_file_name = result_image_file_name.format(await async_sha256(connect_link.encode('utf-8')))
     result_image_path: Path = __connect_image_folder_path / result_image_file_name
@@ -35,3 +34,7 @@ async def get_connect_image(product_user: ProductUser) -> Path:
     background_image.save(result_image_path)
 
     return Path(result_image_path)
+
+async def get_connect_image(product_user: ProductUser) -> Path:
+    result = await get_connect_image_by_connect_link(product_user.connect_link)
+    return result

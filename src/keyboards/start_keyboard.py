@@ -27,6 +27,7 @@ async def get_keyboard(bot_user: BotUser) -> InlineKeyboardMarkup:
     inactive_connect_menu_button = InlineKeyboardButton(
         text=__start_menu_localisation.get("inactive_connect_menu_button", "Connect"),
         callback_data="inactive_connect_menu",
+        style="danger"
     )
     support_menu_button = InlineKeyboardButton(
         text=__start_menu_localisation.get("support_menu_button", "Support"),

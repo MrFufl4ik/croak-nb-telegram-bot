@@ -8,8 +8,6 @@ start_menu:
     <b>CroakNB</b> - имперское платное программное обеспечение, обеспечивающее лучшое интернет соединение на планете.
     
     Наш продукт <u>обеспечивает</u> хорошое быстрое и безопасное соединение, а также активную поддержку.
-    
-    Узнать больше о CroakNB можно в <u>Оферте</u> продукта и в <u>Статусе</u>.
   status_menu_button: "Статус"
   offer_menu_button: "Оферта"
   support_menu_button: "Поддержка"
@@ -24,27 +22,44 @@ admin_menu:
 status_menu:
   caption_without_active_product: |
     Ваша подписка <u>истекла</u>.
+    Текущая стоимость подписки: <b>{0}₽ / 29 дн</b>.
     
     Продлите подписку что-бы продолжать использование CroakNB!
-    
-    - Стоимость подписки: <b>{0}₽ / 29 дн</u>.
   caption_with_active_product: |
     Ваша подписка <u>активна</u> до {1}.
-    
-    Не забудьте оплатить подписку!
-    
-    - Стоимость подписки: <b>{0}₽ / 29 дн</b>.
+    Текущая стоимость подписки: <b>{0}₽ / 29 дн</b>.
 
-connect_menu:
+    Не забудьте оплатить подписку!
+
+main_connect_menu:
   caption: |
     ㅤ
-    - <a href="{1}"><u>Happ под Windows</u></a>
-    - <a href="{2}"><u>Happ под Linux</u></a>
-    - <a href="{3}"><u>Happ под Android</u></a>
-    
     Добавте конфигурацию ниже в <b>Happ</b>:
     
     <pre>{0}</pre>
+    индивидуальная подписка | main | happ
+
+wl_connect_menu:
+  caption: |
+    ㅤ
+    Добавте конфигурацию ниже в <b>Happ</b>:
+
+    <pre>{0}</pre>
+    глобальная подписка | wl | happ
+
+connect_menu:
+  caption: |
+    Сервис <b>CroakNB</b> предоставляет несколько вариантов подключения.
+    
+    Скачать Happ:
+      - <a href="{0}"><u>Happ под Windows</u></a>
+      - <a href="{1}"><u>Happ под Linux</u></a>
+      - <a href="{2}"><u>Happ под Android</u></a>
+    
+    Выберите подключение ниже:
+  main_connect_menu_button: "HAPP | Основное подключение"
+  wl_connect_menu_button: "HAPP | Белые списки"
+
   inactive_answer_message: "Ваша подписка закончилась."
 
 offer_menu:
