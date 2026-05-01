@@ -43,6 +43,14 @@ async def get_product_user(bot_user: BotUser) -> ProductUser:
         result = await session.execute(stmt)
         return result.scalar_one_or_none()
 
+async def get_final_cost_by_bot_user(bot_user: BotUser) -> int:
+    default_cost = __product_config.get("default_cost", 100)
+    is_exists = await is_product_user_exists(bot_user)
+    if not is_exists: return default_cost
+    product_user = await get_product_user(bot_user)
+    if product_user.cost is None: return default_cost
+    return product_user.cost
+
 async def is_product_user_active(bot_user: BotUser) -> bool:
     is_exists = await is_product_user_exists(bot_user)
     if not is_exists: return False

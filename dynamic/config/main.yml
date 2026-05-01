@@ -3,6 +3,7 @@ telegram_image_cache:
   expire_minutes: 60.0
 product:
   default_cost: 200
+  subscription_day_count: 29
 prolong:
   bank_address: "+09161234567"
 support:
