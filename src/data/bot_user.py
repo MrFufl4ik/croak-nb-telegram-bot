@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Boolean, exists, select
+from sqlalchemy import Column, Integer, Boolean, exists, select, BigInteger
 from sqlalchemy.orm import Mapped
 
 from src.core.database import database_clients
@@ -9,7 +9,7 @@ database = database_clients.get_main_database()
 class BotUser(Base):
     __tablename__ = "bot_user"
     id: Mapped[int] = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    telegram_id: Mapped[int] = Column(Integer, unique=True)
+    telegram_id: Mapped[int] = Column(BigInteger, unique=True)
     is_verified: Mapped[bool] = Column(Boolean, default=False)
     is_admin: Mapped[bool] = Column(Boolean, default=False)
 
