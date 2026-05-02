@@ -59,6 +59,7 @@ def init_environment_variables() -> None:
 async def main():
     init_logging()
     await init_database()
+
     init_environment_variables()
     dp = init_dispatcher()
     await dp.start_polling(get_telegram_bot())

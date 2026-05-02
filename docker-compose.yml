@@ -23,7 +23,7 @@ services:
         - croak-nb-network
   database:
     image: postgres:18
-    container_name: danny-glass-database
+    container_name: croak-nb-database
     environment:
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
@@ -37,14 +37,21 @@ services:
       - "5432:5432"
   redis:
     image: redis:7-alpine
-    container_name: danny-glass-redis
+    container_name: croak-nb-redis
     command: sh -c "redis-server --requirepass ${REDIS_PASSWORD}"
     volumes:
       - redis_data:/data
     restart: no
     networks:
       - croak-nb-network
-
+  xray:
+    image: teddysun/xray
+    container_name: croak-nb-xray
+    restart: unless-stopped
+    volumes:
+      - ./dynamic/proxy/config.json:/etc/xray/config.json
+    networks:
+      - croak-nb-network
 networks:
   croak-nb-network:
     driver: bridge

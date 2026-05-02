@@ -21,7 +21,13 @@ async def get_userinfo_keyboard(chat_info: ChatFullInfo) -> InlineKeyboardMarkup
         url=f"tg://user?id={chat_info.id}",
         style="success"
     )
+    go_to_chat_button = InlineKeyboardButton(
+        text="go to chat",
+        url=f"t.me/{chat_info.username}",
+        style="primary"
+    )
     result.append([go_to_account_button])
+    result.append([go_to_chat_button])
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=result)
     return keyboard

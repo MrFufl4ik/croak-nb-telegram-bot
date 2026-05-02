@@ -1,3 +1,5 @@
+import os
+
 from aiogram import Router
 from aiogram.enums import ParseMode
 from aiogram.types import CallbackQuery, InputMediaPhoto
@@ -13,7 +15,6 @@ from src.routers.start_router import init_start_message
 router = Router()
 
 __wl_connect_menu_localisation: dict = localisation_config["wl_connect_menu"]
-__wl_connect_config: dict = main_config["wl_connect"]
 
 @router.callback_query(lambda c: c.data == "wl_connect_menu")
 async def __on_callback(callback: CallbackQuery):
@@ -23,7 +24,7 @@ async def __on_callback(callback: CallbackQuery):
         await init_start_message(callback.from_user, callback.message)
         return
 
-    connect_link = __wl_connect_config.get("connect_link", "https://google.com")
+    connect_link = os.environ.get("WL_CONNECT_LINK", "https://google.com")
     connect_image = await get_connect_image_by_connect_link(connect_link)
     media = await get_cached_image(connect_image)
     caption = __wl_connect_menu_localisation.get("caption", "{0}")

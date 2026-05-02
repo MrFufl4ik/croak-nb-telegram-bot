@@ -5,6 +5,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from aiogram import Bot
+from aiogram.client.session.aiohttp import AiohttpSession
 from aiogram.types import Message, FSInputFile, InlineKeyboardButton
 
 from redis import Redis
@@ -17,7 +18,13 @@ bot: Bot | None = None
 def get_telegram_bot() -> Bot:
     global bot
     if bot is not None: return bot
-    bot = Bot(token=os.environ.get("TELEGRAM_BOT_TOKEN"))
+    enable_xray = bool(int(os.environ.get("ENABLE_XRAY", 0)))
+    api_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    if enable_xray:
+        session = AiohttpSession(proxy="socks5://xray:1080")
+        bot = Bot(token=api_token, session=session)
+    else:
+        bot = Bot(token=api_token)
     return bot
 
 __telegram_image_cache_config: dict = main_config["telegram_image_cache"]
